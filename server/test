@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: ayoreal
+spec:
+  selector:
+      app: ayoreal
+  spec:
+    type: LoadBalancer
+    ports: 30
+    - targetPort: http-server
+  selector:
+    app: ayoreal
+
+
+
+
+
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: ayoreal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ayoreal
+  template:
+    metadata:
+      labels:
+        app: ayoreal
+    spec:
+      containers:
+      - name: ayoreal
+        image: ayoreal/ayoreal:latest
+        ports:
+        - name : http-server
+          containerPort: 3000
+        env:
+        - name: GCLOUD_Project
+          value: [GCLOUD_Project]
+        - name: GCLOUD_BUCKET
+          value: [GCLOUD_BUCKET]
+
