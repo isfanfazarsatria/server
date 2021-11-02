@@ -15,8 +15,8 @@ const productive_invoiceRoute = require("./src/routes/productive_invoiceRoute");
 const reksadanaRoute = require("./src/routes/reksadanaRoute");
 const sbnRoute = require("./src/routes/sbnRoute");
 
-const PORT = process.env.PORT || 8080;
-const HOST = process.env.HOST || " 0.0.0.0 ";
+const PORT = process.env.PORT
+const HOST = process.env.HOST
 const app = express();
 
 //To read req.body
